@@ -2,5 +2,9 @@
 Website Monitoring
 
 ## Run
-1. `docker-compose up -d --build`
-2. `docker-compose run app python main.py`
+
+### Build
+`docker build ./`
+
+### Run
+`docker run website-monitoring_app python main.py`
