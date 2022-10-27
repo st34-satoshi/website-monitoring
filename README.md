@@ -4,7 +4,7 @@ Website Monitoring
 ## Run
 
 ### Build
-`docker build ./`
+`docker build . -t website-monitoring`
 
 ### Run
-`docker run website-monitoring_app python main.py`
+`docker run --mount type=bind,source="$(pwd)/log/monitor.log",target=/usr/src/app/log/monitor.log website-monitoring python main.py`
