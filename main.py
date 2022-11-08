@@ -16,14 +16,19 @@ logger.setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(description='website monitoring')
 parser.add_argument('--messenger', default='logger')
+parser.add_argument('--send_all_success', default='False')
 args = parser.parse_args()
 
 def main():
     messenger = create_messenger(args.messenger)
+    all_ok = True
     for info in MONITOR_SITES:
         result, message = monitor(info)
         if not result:
             messenger.send_error(message)
+            all_ok = False
+    if all_ok and args.send_all_success == 'True':
+        messenger.send_message('all ok!')
 
 
 if __name__ == '__main__':
