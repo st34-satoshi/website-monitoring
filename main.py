@@ -1,6 +1,5 @@
 from monitor_website import monitor
 from monitor_sites import MONITOR_SITES
-# from log_manager import get_logger
 import logging
 
 logger = logging.getLogger('MonitorLog')
@@ -12,12 +11,12 @@ file_handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)8s %(messag
 logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
-
 def main():
     for info in MONITOR_SITES:
-        result = monitor(info)
+        result, message = monitor(info)
         if not result:
             print('error')
+            print(message)
 
 
 if __name__ == '__main__':
