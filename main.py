@@ -1,5 +1,6 @@
 from monitor_website import monitor
 from monitor_sites import MONITOR_SITES
+from messenger.create_messenger import create_messenger
 import logging
 
 logger = logging.getLogger('MonitorLog')
@@ -12,11 +13,11 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.INFO)
 
 def main():
+    messenger = create_messenger("")
     for info in MONITOR_SITES:
         result, message = monitor(info)
         if not result:
-            print('error')
-            print(message)
+            messenger.send_error(message)
 
 
 if __name__ == '__main__':
