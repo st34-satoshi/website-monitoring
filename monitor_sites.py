@@ -8,6 +8,5 @@ MONITOR_SITES = [
         "url": "https://www.google.com/blah",
         "expect_body_includes": "That’s an error.",
         "expect_status_code": 404
-
     }
 ]
