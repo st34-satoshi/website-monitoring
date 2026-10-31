@@ -24,5 +24,14 @@ with `--send_all_success True`
 - `$ docker build . -t website-monitoring`
 - `$ docker run --mount type=bind,source="$(pwd)/log/monitor.log",target=/usr/src/app/log/monitor.log website-monitoring python main.py --messenger slack`
 
+#### use discord
+
+```sh
+export DISCORD_WEBHOOK_URL='<webhook-url>'
+docker run --env DISCORD_WEBHOOK_URL \
+  --mount type=bind,source="$(pwd)/log/monitor.log",target=/usr/src/app/log/monitor.log \
+  website-monitoring python main.py --messenger discord
+```
+
 ## Setting
 Set the url and expected body message in `monitor_sites.py`

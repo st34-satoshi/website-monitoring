@@ -3,6 +3,10 @@ import logging
 logger = logging.getLogger('MonitorLog').getChild("messenger")
 
 
+class NotificationError(Exception):
+    """A notification could not be delivered."""
+
+
 class Messenger:
 
     def send_message(self, message):

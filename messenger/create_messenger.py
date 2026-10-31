@@ -1,8 +1,13 @@
 from messenger.messenger import Messenger
-from messenger.slack import SlackMessenger
 
 
 def create_messenger(name):
     if name == "slack":
+        from messenger.slack import SlackMessenger
         return SlackMessenger()
-    return Messenger()
+    if name == "discord":
+        from messenger.discord import DiscordMessenger
+        return DiscordMessenger()
+    if name == "logger":
+        return Messenger()
+    raise ValueError("Unknown messenger")
